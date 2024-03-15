@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  glue:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        GLUE_VERSION: 4.0.0
+        POETRY_VERSION: 1.4.0
+    environment:
+      DISABLE_SSL: "true"
+      AWS_PROFILE: "localstack"
+      AWS_REGION: "us-east-2"
+    volumes:
+      - ../:/home/glue_user/workspace
+    command: -c "while sleep 1000; do :; done"
+    ports:
+      - "4041:4040"
+      - "18081:18080"

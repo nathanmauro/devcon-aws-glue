@@ -1,0 +1,47 @@
+<configuration>
+    <property>
+        <name>hive.metastore.connect.retries</name>
+        <value>15</value>
+    </property>
+    <property>
+        <name>hive.metastore.client.factory.class</name>
+        <value>com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory</value>
+    </property>
+    <!-- Override the S3 endpoint to use LocalStack -->
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+    </property>
+    <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.ssl.enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>com.amazonaws.services.s3a.enableV4</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>fs.s3a.aws.credentials.provider</name>
+        <value>org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider</value>
+    </property>
+    <property>
+        <name>fs.s3a.access.key</name>
+        <value>localstack</value>
+    </property>
+    <property>
+        <name>fs.s3a.secret.key</name>
+        <value>localstack</value>
+    </property>
+    <property>
+        <name>fs.s3a.session.token</name>
+        <value>localstack</value>
+    </property>
+    <property>
+        <name>fs.s3a.endpoint</name>
+        <value>http://host.docker.internal:4566</value>
+    </property>
+</configuration>

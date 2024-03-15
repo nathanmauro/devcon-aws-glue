@@ -1,0 +1,1 @@
+alias aws='aws --endpoint-url=http://host.docker.internal:4566'
