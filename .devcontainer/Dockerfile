@@ -10,6 +10,14 @@ RUN chmod -R 777 /usr/local/lib/python3.10
 
 USER $USER
 
+# Copy over private key, and set permissions
+ADD  /Users/nathan.maurocrowncastle.com/.ssh/id_rsa /root/.ssh/id_rsa
+# Create known_hosts
+RUN touch /root/.ssh/known_hosts
+# Add git providers to known_hosts
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+
 ARG HOME="/home/$USER"
 ARG POETRY_VERSION="none"
 
